@@ -4,17 +4,20 @@ import { useSearchParams } from "react-router-dom";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import MoviesList from "../../components/MoviesList/MoviesList";
 import { fetchSearchByQuery } from "../../services/api";
+import Loader from "../../components/Loader/Loader";
 
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
   const [wasSearched, setWasSearched] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!query) return;
 
     const getMovies = async () => {
+      setLoading(true);
       try {
         const results = await fetchSearchByQuery(query);
         const filtered = results?.filter((movie) =>
@@ -24,6 +27,8 @@ const MoviesPage = () => {
       } catch (error) {
         console.error(error);
         setMovies([]);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -44,8 +49,9 @@ const MoviesPage = () => {
   return (
     <div>
       <SearchBar handleChange={handleChange} />
+      {loading && <Loader />}
 
-      {wasSearched && query && movies.length === 0 && (
+      {wasSearched && !loading && query && movies.length === 0 && (
         <p>No movies found for "{query}"</p>
       )}
 
