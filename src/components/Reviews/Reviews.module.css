@@ -1,0 +1,15 @@
+.reviewContainer {
+}
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.reviewItem {
+}
+.reviewAuthor {
+  margin-bottom: 8px;
+}
+.reviewContent {
+  color: #2e2f42;
+}

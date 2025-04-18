@@ -1,0 +1,25 @@
+.header {
+  padding: 16px 8px 16px 8px;
+  background-color: rgb(54, 215, 183);
+  & div {
+    display: flex;
+    gap: 20px;
+    a {
+      color: rgb(13, 87, 72);
+      background-color: aliceblue;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      outline: transparent;
+      border-radius: 6px;
+      border-color: transparent;
+      box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+      transition: background-color 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        color 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      &:hover {
+        color: #fafafa;
+        background-color: rgba(25, 109, 93, 0.468);
+      }
+    }
+  }
+}

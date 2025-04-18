@@ -27,7 +27,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <h2>Popular Movies</h2>
+      <h2>Most Popular</h2>
       {moviesList.length > 0 ? (
         <MoviesList moviesList={moviesList} />
       ) : (

@@ -29,7 +29,7 @@ const DetailsPage = () => {
   if (!movieDetail) return <Loader />;
 
   return (
-    <div>
+    <div className={s.detailsWrapper}>
       <Link to={goBackLink} className={s.backLink}>
         Go back
       </Link>
@@ -43,7 +43,7 @@ const DetailsPage = () => {
           alt={movieDetail.title}
           className={s.poster}
         />
-        <div>
+        <div className={s.movieDescr}>
           <h1 className={s.infoTitle}>{movieDetail.title}</h1>
           <p className={s.title}>Popularity: {movieDetail.popularity}</p>
           <h2>Overview</h2>
