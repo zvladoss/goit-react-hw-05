@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchCastById } from "../../services/api";
 import s from "./MovieCast.module.css";
-const MoviesCast = () => {
+const MovieCast = () => {
   const { movieId } = useParams();
   const [movieCast, setMovieCast] = useState([]);
   const defaultActorImg =
@@ -38,4 +38,4 @@ const MoviesCast = () => {
   );
 };
 
-export default MoviesCast;
+export default MovieCast;

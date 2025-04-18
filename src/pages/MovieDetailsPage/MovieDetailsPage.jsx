@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import {
   Link,
   NavLink,
@@ -8,13 +8,13 @@ import {
 } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import { fetchMovieById } from "../../services/api";
-import s from "./DetailsPage.module.css";
+import s from "./MovieDetailsPage.module.css";
 
-const DetailsPage = () => {
+const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movieDetail, setMovieDetail] = useState(null);
   const location = useLocation();
-  const goBackLink = location.state?.from || "/movies";
+  const goBackLink = useRef(location.state || "/movies");
 
   useEffect(() => {
     console.log("useEffect triggered");
@@ -30,7 +30,7 @@ const DetailsPage = () => {
 
   return (
     <div className={s.detailsWrapper}>
-      <Link to={goBackLink} className={s.backLink}>
+      <Link to={goBackLink.current} className={s.backLink}>
         Go back
       </Link>
       <div className={s.movieInfo}>
@@ -71,4 +71,4 @@ const DetailsPage = () => {
   );
 };
 
-export default DetailsPage;
+export default MovieDetailsPage;
